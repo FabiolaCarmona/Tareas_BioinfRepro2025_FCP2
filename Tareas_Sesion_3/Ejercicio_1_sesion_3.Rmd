@@ -1,0 +1,25 @@
+---
+title: "Ejercicio 1 sesion 3"
+author: "Fabiola Carmona"
+date: "2025-09-07"
+output: html_document
+---
+
+# Crear variable con logaritmo base 10 de 50
+```
+> a <- log10(50)
+>
+> # Crear otra variable con valor igual a 5
+>
+> b <- 5
+>
+> # Sumar ambas variables
+>
+> resultado <- a + b
+>
+> a + b
+>
+> # Resultado:
+> [1] 6.69897
+
+```
