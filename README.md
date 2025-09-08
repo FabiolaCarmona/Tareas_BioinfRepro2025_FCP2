@@ -17,5 +17,5 @@ El objetivo de este repositorio es organizar y centralizar las actividades prác
 - Git para control de versiones y manejo de cambios
 
 ## **Trabajos semanales:**
-- Tarea 2:
-- Tarea 3
+- Tarea 2: (./Tareas/Tarea2)
+- Tarea 3: (./Tareas/Tareas_Sesion_3)
