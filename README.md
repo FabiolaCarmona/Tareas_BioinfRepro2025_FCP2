@@ -1,21 +1,30 @@
-# Tareas_BioinfRepro2025_FCP
-Repositorio de tareas Bioinformatica Reproducible 2025
+# Tareas_BioinfRepro2025_FCP  
+Repositorio de tareas de Bioinformática Reproducible 2025 Fabiola Carmona Pastén
 
-## Enlace al repositorio
-
+## Enlace al repositorio  
 [https://github.com/FabiolaCarmona/Tareas_BioinfRepro2025_FCP](https://github.com/FabiolaCarmona/Tareas_BioinfRepro2025_FCP)
 
-## Estructura y Tareas Semanales
-## Descripción General
+## Descripción general  
+Este repositorio centraliza las actividades prácticas del curso de Bioinformática Reproducible 2025, proporcionando los scripts y datos necesarios para reproducir todos los análisis realizados.
 
-El objetivo de este repositorio es organizar y centralizar las actividades prácticas del curso, facilitando el acceso y la reproducibilidad de los análisis realizados en Bioinformática.
+## Estructura del repositorio  
+- `Tareas/` contiene las tareas semanales organizadas por sesión.  
+- `Scripts/` incluye scripts R organizados para análisis reproducibles.  
+- `Datos/` carpeta con los datos usados durante las tareas (si aplica).
 
-## Requisitos
+## Requisitos  
+- R y RStudio (u otro entorno compatible).  
+- Paquetes R: `ade4`, `ggplot2`, `sp`, y otros mencionados en cada tarea.  
+- Git para control de versiones y manejo de cambios.
 
-- R y RStudio (u otro entorno compatible)
-- Paquetes R: ade4, ggplot2, sp y otros mencionados en cada sesión
-- Git para control de versiones y manejo de cambios
+## Instalación  
+Para clonar y usar este repositorio, ejecutar:
+```
+git clone https://github.com/FabiolaCarmona/Tareas_BioinfRepro2025_FCP.git
+cd Tareas_BioinfRepro2025_FCP
+```
+Luego, instalar los paquetes necesarios en R: `install.packages(c("ade4", "ggplot2", "sp"))`
 
-## **Trabajos semanales:**
-- Tarea 2: [Tarea 2](./Tareas/Tarea2)
-- Tarea 3: [Tarea 3](./Tareas/Tareas_Sesion_3)
+## Trabajos semanales  
+1. [Tarea 2](./Tareas/Tarea2)  
+2. [Tarea 3](./Tareas/Tareas_Sesion_3)  
