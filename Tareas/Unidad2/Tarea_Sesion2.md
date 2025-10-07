@@ -83,7 +83,7 @@ En R, genere gráficos similares para las combinaciones Component 2 vs 3 y 3 vs 
 Se generaron gráficos en R usando las combinaciones de componentes principales:
 
 - Componente 2 vs Componente 3
-![PC2 vs PC3](imagenes/PC2_vs_PC3.png)
+![PC2_vs_PC3](imagenes/PC2_vs_PC3.png)
 
 - Componente 3 vs Componente 4
 ![PC3 vs PC4](imagenes/PC3_vs_PC4.png)
