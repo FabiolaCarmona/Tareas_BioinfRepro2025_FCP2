@@ -1,0 +1,381 @@
+---
+title: "Ejercicios sesion 3"
+author: "Fabiola Carmona"
+date: "2025-09-07"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+\#**Ejercicio 1** Crear variable con logaritmo base 10 de 50
+
+```         
+> a <- log10(50)
+>
+> # Crear otra variable con valor igual a 5
+>
+> b <- 5
+>
+> # Sumar ambas variables
+>
+> resultado <- a + b
+>
+> a + b
+>
+> # Resultado:
+> [1] 6.69897
+```
+
+\#**Ejercicio 2**: Sumar 2 a los números del 1 al 150
+
+El siguiente código suma 2 a cada número desde 1 hasta 150:
+
+```         
+result <- (1:150) + 2
+print(result)
+```
+
+Resultado: [1] 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 [20] 22
+23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 [39] 41 42 43 44
+45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 [58] 60 61 62 63 64 65 66
+67 68 69 70 71 72 73 74 75 76 77 78 [77] 79 80 81 82 83 84 85 86 87 88
+89 90 91 92 93 94 95 96 97 [96] 98 99 100 101 102 103 104 105 106 107
+108 109 110 111 112 113 114 115 116 [115] 117 118 119 120 121 122 123
+124 125 126 127 128 129 130 131 132 133 134 135 [134] 136 137 138 139
+140 141 142 143 144 145 146 147 148 149 150 151 152
+
+\#**Ejercicio 3**: ¿cuántos números son mayores a 20 en el vector
+-13432:234?
+
+Crear el vector `v <_ -13432:234` Se cuenta cuantos elementos son
+mayores a 20 `cantidad <- sum (v>20)` Resultado `print (cantidad)`
+Resultado: [1] 214
+
+\#**Ejercicio 4**: Carga en R el archivo
+`PracUni1Ses3/maices/meta/maizteocintle_SNP50k_meta_extended.txt` y
+ponlo en un objeto de R llamado meta_maiz.
+
+```         
+ruta <- "C:/Users/fabio/Desktop/Doctorado/Semestre 2/Bioinformatica/Sesion 3/maizteocintle_SNP50k_meta_extended.txt"
+
+> meta_maiz <- read.delim(ruta, header = TRUE, stringsAsFactors = FALSE)
+> head(meta_maiz)
+```
+
+\#**Ejercicio 5**: Escribe un for loop para que divida 35 entre 1:10 e
+imprima el resultado en la consola.
+
+```         
+for (i in 1:10) {
+  resultado <- 35 / i
+  print(resultado)
+}
+```
+
+Resultado: [1] 35 [1] 17.5 [1] 11.66667 [1] 8.75 [1] 7 [1] 5.833333 [1]
+5 [1] 4.375 [1] 3.888889 [1] 3.5
+
+Modifica el loop anterior para que haga las divisiones solo para los
+números nones (con un comando, NO con c(1,3,...)).
+
+```         
+for (i in 1:10) {
+  if (i %% 2 == 0) {  # Si i es par
+    next             # Salta a la siguiente iteración
+  }
+  resultado <- 35 / i
+  print(resultado)
+}
+```
+
+Resultado: [1] 35 [1] 11.66667 [1] 7 [1] 5 [1] 3.888889
+
+Modifica el loop anterior para que los resultados de correr todo el loop
+se guarden en una df de dos columnas, la primera debe tener el texto
+"resultado para x" (donde x es cada uno de los elementos del loop) y la
+segunda el resultado correspondiente a cada elemento del loop. Pista: el
+primer paso es crear un vector `fuera` del loop.
+
+```         
+ # Crear vectores vacíos
+
+texto \<- character() \# vector para los textos valores \<- numeric() \#
+vector para los resultados
+
+for (i in 1:10) { if (i %% 2 == 0) { next } resultado \<- 35 / i texto
+\<- c(texto, paste("resultado para", i)) \# agregar texto valores \<-
+c(valores, resultado) \# agregar resultado }
+
+ # Crear data frame con las dos columnas
+
+df_resultados \<- data.frame(Descripcion = texto, Resultado = valores)
+
+print(df_resultados)
+```
+
+Descripcion Resultado
+
+1 resultado para 1 35.000000 2 resultado para 3 11.666667 3 resultado
+para 5 7.000000 4 resultado para 7 5.000000 5 resultado para 9 3.888889
+
+\#**Ejercicio 6**: Abre en RStudio el script
+`PracUni1Ses3/mantel/bin/1.IBR_testing.r`. Este script realiza un
+análisis de aislamiento por resistencia con Fst calculadas con ddRAD en Berberis alpina.
+
+Lee el código del script y determina:
+
+**¿qué hacen los dos for loops del script?** El primer loop recorre diferentes escenarios o condiciones temporales (por ejemplo, "present" para presente, "ccsm", "miroc" y años que parecen ser paleoclimáticos o ecológicos). Para cada condición, lee un archivo de distancia efectiva `(resistances.out)` con `read.effdist`. Además, calcula la matriz de distancia efectiva y su media por población. Con ello también guarda estos resultados en variables dinámicas nombradas según la condición (por ejemplo, B.present para matriz y B.mean.present para medias). 
+Por otro lado, el segundo loop realiza un test de Mantel entre la matriz de distancias efectivas (`B.i`) y la matriz linealizada de Fst (`B.FstLin`) para cada condición. Además imprime resultados del test de Mantel (valor observado, p-valor) y genera un gráfico de dispersión con la función `DistPlot`. Finalmente, guarda en un data frame (`IBRresults`) los resultados del test (nombre de escenario, p-valor y estadístico de correlación).
+
+**¿qué paquetes necesitas para correr el script?**
+- `ade4`: Para análisis estadísticos y el test de Mantel (mantel.rtest).
+
+- `ggplot2`: Para la generación de gráficos (probablemente usada en DistPlot).
+
+- `sp`: Para manejo de datos espaciales y cálculo de distancias geográficas (spDists).
+
+**¿qué archivos necesitas para correr el script?**
+- `read.fst_summary_fix.R`: Función casera para leer sumarios Fst.
+- `read.effdist.R`: Función casera para leer distancias efectivas desde archivos de resistencia.
+- `DistPlot.R`: Función casera para graficar distancias genéticas vs efectivas.
+- `../spatial/surveyed_mountains.tsv`: Archivo con información espacial (puntos de población).
+- `../genetic/BerSS.sumstats.tsv` y `../genetic/BerSS.fst_summary.tsv`: Datos genéticos con matrices Fst.
+- Archivos de resistencia para cada condición ubicados en `../spatial/resdist/Balpina_<condición>_resistances.out` (por ejemplo, `Balpina_present_resistances.out`).
+
+#**Ejercicio 7**: Escribe una función llamada calc.tetha que te permita calcular tetha dados Ne y u como argumentos. Recuerda que tetha =4Neu.
+```
+calc.tetha <- function(Ne, u) {
+  theta <- 4 * Ne * u
+  return(theta)
+}
+```
+#**Ejercicio 8**: Al script del ejercicio de las pruebas de Mantel, agrega el código necesario para realizar un Partial Mantel test entre la matriz Fst, y las matrices del presente y el LGM, parcializando la matriz flat. Necesitarás el paquete `vegan`.
+
+```
+  # Limpiar entorno
+rm(list = ls())
+
+  # Cargar librerías
+library(ade4)
+library(ggplot2)
+library(sp)
+if (!requireNamespace("vegan", quietly = TRUE)) {
+  install.packages("vegan")
+}
+library(vegan)
+
+  # Cargar funciones auxiliares
+source("read.fst_summary_fix.R")
+source("read.effdist.R")
+source("DistPlot.R")
+
+  # Cargar datos geográficos
+points.info <- read.delim("../spatial/surveyed_mountains.tsv")
+points.infoxy <- as.matrix(points.info[,c(5,6)], longlat=TRUE)
+
+  # Distancias geográficas
+GeoDist <- spDists(points.infoxy)
+colnames(GeoDist) <- points.info$Key
+rownames(GeoDist) <- points.info$Key
+
+  # Definir carpetas y poblaciones
+genfolder <- "../genetic"
+circfolder <- "../spatial/resdist"
+popNames <- c("Aj","Iz","Ma","Pe","Tl","To")
+
+  # Leer matriz Fst
+B.Fst <- read.fst_summary_fix(file=paste0(genfolder, "/BerSS.fst_summary.tsv"), popNames=popNames)
+
+  # Leer focal points
+focpoints <- read.delim(paste0(circfolder, "/Balpina_focalpoints.txt"), header=FALSE)
+x <- points.info$ID %in% focpoints[,1]
+focpoints <- points.info[x,]
+popNamesFP <- as.vector(focpoints$Key)
+
+  # Cargar matrices de distancias efectivas
+for(i in c("present", "ccsm", "miroc", "flat", "1800", "2000", "2300", "2500", 
+           "2700", "3000", "3300", "3500", "4000")) {
+  resfile <- paste0(circfolder, "/Balpina_", i, "_resistances.out")
+  eff.dist <- read.effdist(file=resfile, popNames=popNamesFP, des.order=popNames)
+  mean.effD <- apply(eff.dist, 2, mean)
+  assign(paste0("B.", i), eff.dist)
+  assign(paste0("B.mean.", i), mean.effD)
+}
+
+  # Conseguir distancias geográficas ordenadas correctamente
+B.GeoDist <- GeoDist[match(popNames, rownames(GeoDist)), match(popNames, colnames(GeoDist))]
+
+  # Linearizar Fst
+B.FstLin <- B.Fst / (1 - B.Fst)
+
+  # Mantel test simples
+IBRresults <- c("rster", "MTpvalue", "MTr")
+for(i in c("present", "ccsm", "miroc", "flat", "1800", "2000", "2300", "2500", 
+          "2700", "3000", "3300", "3500", "4000")) {
+  print(paste("Results for", i))
+  x <- mantel.rtest(as.dist(get(paste0("B.", i))), as.dist(B.FstLin), nrepet=10000)
+  print(x)
+  
+  DistPlot(get(paste0("B.", i)), B.FstLin, plotnames=FALSE,
+           ylabel=expression("F"[ST]*"/(1 - "[FST]*")"),
+           xlabel=paste("Effective distance", i))
+  
+  MTpvalue <- round(x$pvalue, 6)
+  MTr <- round(x$obs, 4)
+  rster <- paste(i)
+  IBRresults <- rbind(IBRresults, c(rster, MTpvalue, MTr))
+}
+print(IBRresults)
+
+  # Partial Mantel tests controlando “flat”
+mat_flat <- as.dist(get("B.flat"))
+mat_FstLin <- as.dist(B.FstLin)
+mat_present <- as.dist(get("B.present"))
+mat_LGM <- as.dist(get("B.ccsm"))
+
+partial_mantel_present <- mantel.partial(mat_FstLin, mat_present, mat_flat, permutations = 10000)
+print(partial_mantel_present)
+
+partial_mantel_LGM <- mantel.partial(mat_FstLin, mat_LGM, mat_flat, permutations = 10000)
+print(partial_mantel_LGM)
+
+  # Info de sesión
+sessionInfo()
+```
+#**Ejercicio 9**: Escribe un script que debe estar guardado en PracUni1Ses3/maices/bin y llamarse ExplorandoMaiz.R, que 1) cargue en R el archivo PPracUni1Ses3maices/meta/maizteocintle_SNP50k_meta_extended.txt y 2) responda lo siguiente:
+
+Script:
+```
+setwd("C:/Users/fabio/Desktop/Doctorado/Semestre 2/Bioinformatica/Sesion 3/PracUni1Ses3/mantel/bin/")
+
+```# ExplorandoMaiz.R
+# ExplorandoMaiz.R
+# Script para cargar archivo maizteocintle_SNP50k_meta_extended.txt y explorar su contenido
+
+# Establecer directorio de trabajo a la carpeta del script 
+# setwd("C:/Users/fabio/Desktop/Doctorado/Semestre 2/Bioinformatica/Sesion 3/PracUni1Ses3/maices/bin")
+
+# Ruta relativa al archivo de datos
+archivo_meta <- "../meta/maizteocintle_SNP50k_meta_extended.txt"
+
+# Cargar datos, asumiendo tabulaciones y cabecera
+meta_data <- read.delim(archivo_meta, header = TRUE, stringsAsFactors = TRUE)
+
+# Mostrar el tipo de objeto creado
+print(paste("Clase del objeto cargado:", class(meta_data)))
+
+# Mostrar las primeras 6 filas
+print("Primeras 6 filas:")
+print(head(meta_data))
+
+# Inspeccionar estructura rápida
+print("Estructura del objeto:")
+str(meta_data)
+
+# 1. ¿Qué tipo de objeto creamos al cargar la base?
+class(meta_data)
+[1] "data.frame"
+
+# 2. ¿Cómo se ven las primeras 6 líneas del archivo?
+head(meta_data)
+OrderColecta NSiembra          Origen                  Raza     Estado
+1            2        3  INIFAP-2009-16              Apachito  Chihuahua
+2            1       68         2009-72              Chalque̱o   Tlaxcala
+3            1       91         2007-33 Dulcillo del Noroeste     Sonora
+4            2       39    Chis-2009-18            Dzit-Bacal    Chiapas
+5            2       12 Celaya-2009-114                Celaya Guanajuato
+6            2       41   Celaya-2009-2   Elotes Occidentales Guanajuato
+    Num_Colecta     Nombre_comun         Raza_Primaria Raza_Secundaria
+1            16    Ocho carreras              Apachito              NA
+2            22 Chalque̱o Criollo              Chalque̱o              NA
+3   SON2007-033   Ma\xcc_z Dulce Dulcillo del Noroeste              NA
+4   Repetida 18   Olotillo crema            Dzit-Bacal              NA
+5 2009-REPO-114 Ma\xcc_z Criollo                Celaya              NA
+6 2009-REPO-002 Ma\xcc_z Criollo   Elotes Occidentales              NA
+  A.o._de_colecta              Localidad  Municipio   Estado.1   Longitud  Latitud
+1            2009     Santo Tom\xcc\xc1s   Guerrero  Chihuahua -107.58300 28.68578
+2            2008       Ignacio Zaragoza Cuapiaxtla   Tlaxcala  -97.92944 19.29083
+3            2007            Agua Blanca      Y̩cora     Sonora -108.92467 28.53703
+4            2009 Nuevo Vicente Guerrero Villacorzo    Chiapas  -92.97972 16.03225
+5            2009            El Ahuacate  Uriangato Guanajuato -101.11889 20.09111
+6            2009              Comonfort  Comonfort Guanajuato -100.76583 20.74417
+  Altitud                         Ruizetal2008_grupo         Sanchezetal_grupo
+1    1975                       1A_templado540-640mm       Sierra de Chihuahua
+2    2497                                                           C\xcc_nico
+3    1435                     2A_semicalido500-870mm                 Chapalote
+4     618                     3A_muycalido990-1360mm Maduraci\xcc_n tard\xcc_a
+5    1877 2A_semicalido500-870mm y 1B_templado>650mm       Dentados tropicales
+6    1800 2C_semicalido740-855mm y 1B_templado>650mm              Ocho Hileras
+  Categ.Altitud                 Rbiogeo            DivFloristic     PeralesBiog
+1           mid Sierra Madre Occidental Sierra Madre Occidental Ca\xe5_ones Chi
+2          high           Eje Volcanico  Serranias Meridionales     Mesa Centra
+3           mid Sierra Madre Occidental Sierra Madre Occidental     Sierras del
+4           low      Costa del Pacifico  Serranias Transismicas         Chiapas
+5           mid           Eje Volcanico            Altiplanicie    Baj\xe5\xc1o
+6           mid           Eje Volcanico            Altiplanicie    Baj\xe5\xc1o
+
+# 3. ¿Cuántas muestras hay?
+nrow(meta_data)
+[1] 165
+
+# 4. ¿De cuántos estados se tienen muestras?
+length(unique(meta_data$Estado))
+[1] 19
+
+# 5. ¿Cuántas muestras fueron colectadas antes de 1980?
+sum(meta_data$AñoColecta < 1980, na.rm = TRUE)
+[1] 0
+
+# 6. ¿Cuántas muestras hay de cada raza?
+table(meta_data$Raza)
+ C\xcc_nico                  Olot\xcc_n           C\xcc_nico Norte̱o 
+                         16                           4                           3 
+                      Ancho          Elotes C\xcc_nicos                   Rat\xcc_n 
+                          3                          14                           3 
+                   Apachito                   Arrocillo                        Azul 
+                          2                           4                           2 
+           Blando de Sonora                        Bofo               Cacahuacintle 
+                          1                           1                           5 
+                     Celaya                    Chalque̱o                   Chapalote 
+                          3                           7                           2 
+                   Comiteco Complejo Serrano de Jalisco                      Conejo 
+                          5                           2                           4 
+               Coscomatepec     Cristalino de Chihuahua                       Dulce 
+                          3                           2                           1 
+      Dulcillo del Noroeste                  Dzit-Bacal          Elotero de Sinaloa 
+                          2                           3                           5 
+        Elotes Occidentales                       Gordo                        Jala 
+                          4                           2                           4 
+                    Mushito           Nal-tel de Altura                    Olotillo 
+                          3                           5                           6 
+                     Onave̱o       Palomero de Chihuahua           Palomero Toluque̱o 
+                          2                           1                           1 
+                  Pepitilla                  Reventador            Tablilla de Ocho 
+                          4                           2                           2 
+                Tabloncillo           Tabloncillo Perla                       Tehua 
+                          4                           3                           2 
+                 Tepecintle                      Tuxpe̱o               Tuxpe̱o Norte̱o 
+                          4                           4                           2 
+                     Vande̱o           Zamorano Amarillo              Zapalote Chico 
+                          4                           3                           1 
+            Zapalote Grande             Zea m. mexicana          Zea m. parviglumis 
+                          1                           2                           2
+                          
+# 7. En promedio ¿a qué altitud fueron colectadas las muestras?
+mean(meta_data$Altitud, na.rm = TRUE)
+[1] 1519.242
+
+# 8. ¿Y a qué altitud máxima y mínima fueron colectadas?
+max(meta_data$Altitud, na.rm = TRUE)
+[1] 2769
+min(meta_data$Altitud, na.rm = TRUE)
+[1] 5
+# 9. Crea una nueva df de datos sólo con las muestras de la raza Olotillo
+Olotillo <- subset(meta_data, Raza == "Olotillo")
+
+# 10. Crea una nueva df de datos sólo con las muestras de la raza Reventador, Jala y Ancho
+sub_raza <- subset(meta_data, Raza %in% c("Reventador", "Jala", "Ancho"))
+
+# 11. Escribe la matriz anterior a un archivo llamado "submat.csv" en la carpeta meta
+write.csv(sub_raza, file = "../meta/submat.csv", row.names = FALSE)
