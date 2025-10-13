@@ -67,7 +67,7 @@ En el análisis f3 se obtuvieron valores positivos y altamente significativos en
 
 Estos resultados muestran que las poblaciones de la estepa presentan afinidad genética tanto con el componente relacionado al Irán neolítico como con el de los cazadores-recolectores del noreste europeo. En conjunto, esto apoya la idea de que las poblaciones de la estepa media y tardía se formaron por la combinación de estos dos linajes principales, lo que coincide con el modelo propuesto de mezcla entre grupos tipo CHG/IranN y EHG.
 
-##Resultados F4
+## Resultados F4
 
 ![Resultados F4 proyecto 2](imagenes/proyecto2_imagen_2.png)
 ![Resultados F4 proyecto 2](imagenes/proyecto2_imagen_3.png)
