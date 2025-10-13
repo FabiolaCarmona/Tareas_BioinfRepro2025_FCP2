@@ -43,7 +43,7 @@ Este patrón implica una mayor afinidad genética relativa de GBR.DG hacia el co
 
 ### Resultados qpWave
 
-![Resultados qpWave Proyecto 1](imagenes/proyecto1_imagen3.png)
+![Resultados qpWave Proyecto 1](imagenes/projecto1_imagen3.png)
 
 El análisis qpWave tuvo como objetivo determinar cuántas corrientes de ascendencia independientes son necesarias para explicar las poblaciones europeas modernas y sus posibles fuentes ancestrales. En la tabla de resultados, los modelos con rank = 0 y rank = 1 mostraron valores de p muy bajos (p = 2.32×10⁻⁶¹ y p = 3.9×10⁻⁷, respectivamente), lo que indica que uno o ningún componente ancestral no es suficiente para describir la variación genética observada. En cambio, los modelos con rank = 2, 3 y 4 presentaron valores de p mayores a 0.05, siendo el modelo con rank = 2 (p = 0.57) el primero con un ajuste estadísticamente aceptable.
 
