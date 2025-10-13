@@ -1,4 +1,4 @@
-#Análisis de Admixture y estructura poblacional
+# Análisis de Admixture y estructura poblacional
 
 En este trabajo se desarrollaron cuatro proyectos de análisis poblacional utilizando herramientas del paquete admixtools en R.
 
@@ -6,13 +6,13 @@ El objetivo general fue evaluar la estructura genética y los patrones de mezcla
 
 Cada proyecto aborda un caso distinto de estudio, utilizando poblaciones y periodos específicos para comprender cómo las corrientes ancestrales modelaron su composición genética.
 
-##Proyecto 1: Admixture europeo de 3 vías
+## Proyecto 1: Admixture europeo de 3 vías
 
-**¿Todas las poblaciones europeas actuales muestran el mismo paton de mezcla de 3 vías?
+** ¿Todas las poblaciones europeas actuales muestran el mismo paton de mezcla de 3 vías?
 
-###Resultados F3
+### Resultados F3
 
-Se calculó la deriva genética compartida entre los targets modernos (~GBR.DG, Greek_1.DG, Ireland_EN.SG) y las fuentes antiguas (Turkey_Marmara_Barcin_N.AG, Russia_Samara_EBA_Yamnaya.AG, Luxembourg_Mesolithic.DG~).
+Se calculó la deriva genética compartida entre los targets modernos ~ (GBR.DG, Greek_1.DG, Ireland_EN.SG) y las fuentes antiguas (Turkey_Marmara_Barcin_N.AG, Russia_Samara_EBA_Yamnaya.AG, Luxembourg_Mesolithic.DG) ~.
 Se obtuvieron los siguientes datos:
 
 ![Resultado F3 Proyecto 1](/home/bioinfo1/fcarmona/Tareas_BioinfRepro2025_FCP2/Tareas/Unidad2/Sesion3/imagenes/proyecto1_imagen_1.png)
