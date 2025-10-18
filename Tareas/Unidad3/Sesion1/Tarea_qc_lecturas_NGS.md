@@ -15,10 +15,10 @@ for f in S5*.fastq.gz; do
 done
 ```
 Producto de lo anterior se obtuvo lo siguiente:
-!imagen
+![Contar lineas.png](../Imagenes_U3S1)
 
 Posteriormente se ubica la lectura 3 de cada archivo, analizando la información que presenta. 
-!imagen de analisis de lineas
+![Analisis tercera lectura.png](../Imagenes_U3S1)
 
 Un archivo FASTQ almacena información de secuenciación en bloques de cuatro líneas por cada lectura (read). Entre ellas se encuentran:
 
@@ -39,10 +39,10 @@ Es una línea que sólo empieza con el símbolo “+”. Opcionalmente puede rep
 Contiene una cadena de caracteres ASCII donde cada símbolo codifica la calidad de la base correspondiente en la línea 2. La calidad mide la confianza del secuenciador para cada base y se traduce numéricamente mediante escalas Phred, restando un valor específico al código ASCII.
 
 Para evaluar el efecto del filtrado de calidad, se compararon los valores de calidad Phred (Q) para las primeras 10 bases del tercer read en los archivos crudos y sus versiones filtradas. Los resultados se observan a continuación:
-!traduccion r1 crudo
-!traduccion r1 filtrado
-!traduccion r2 crudo
-!traducción r2 filtrado
+![Traducción archivo r1 crudo](../Imagenes_U3S1/Traduccion_archivo_r1_crudo.png)
+![Traducción archivo r1 filtrado](../Imagenes_U3S1)
+![Traducción archivo r2 crudo](../Imagenes_U3S1)
+![Traducción archivo r2 filtrado](../Imagenes_U3S1)
 
 Los valores numéricos indican que el proceso de filtrado aumenta la calidad de las bases retenidas en las lecturas, al eliminar regiones que presentaban puntuaciones Q bajas.
 
@@ -62,25 +62,25 @@ Se realizó un control de calidad de las lecturas crudas y filtradas empleando F
 
 Muestran la calidad (Phred score) en cada posición de la secuencia antes y después del filtrado. Se observa una notoria mejora tras el filtrado, eliminando tramos de baja calidad y manteniendo la uniformidad de valores altos (Q>30–35).
 
-!imagen graficos
+![Gráficos de calidad de bases](../Imagenes_U3S1)
 
 2. **Distribución de contenido de bases**
 
 Refleja la proporción de cada nucleótido por posición. En las muestras crudas se observan fluctuaciones y posibles sesgos, mientras que tras el filtrado las proporciones se estabilizan, indicando una limpieza eficiente de artefactos y errores de secuenciación.
 
-!imagen
+![Distribución de contenido de bases](../Imagenes_U3S1)
 
 3. **Distribución de longitud de secuencias**
 
 Permite evaluar la homogeneidad de la librería. Antes del filtrado, la distribución es estrecha (longitud uniforme), pero después del filtrado se observa mayor rango de longitudes, reflejo de la remoción de regiones de baja calidad y trimming.
 
-!imagen
+![Distribución de longitud de secuencias](../Imagenes_U3S1)
 
 4. **Contenido de adaptador**
 
 El contenido de adaptador es alto en los archivos crudos e inexistente tras el filtrado, evidenciando la eliminación efectiva de secuencias contaminantes.
 
-!imagen
+![Contenido de adaptador](../Imagenes_U3S1)
 
 En síntesis, la evidencia gráfica y numérica indica una clara mejora en la calidad global de los datos tras el filtrado, validando la utilidad de las etapas de trimming y limpieza en el preprocesamiento para análisis genómicos posteriores.
 
