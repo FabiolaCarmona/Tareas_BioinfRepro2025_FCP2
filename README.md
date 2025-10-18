@@ -31,3 +31,4 @@ Luego, instalar los paquetes necesarios en R: `install.packages(c("ade4", "ggplo
 3. [Unidad 2 - Tarea 4](./Tareas/Unidad2/Prac_Uni5_code)
 4. [Unidad 2 - Tarea 5](./Unidad2/Tarea_Sesion2.md)
 5. [Unidad 2 - Tarea 6](./Tareas/Unidad2/Sesion3)
+6. [Unidad 3 - Tarea 1](Tareas/Unidad3/Sesion1/Tarea_qc_lecturas_NGS.md)
