@@ -1,0 +1,13 @@
+#Tarea Unidad 3 Sesión 1
+
+Archivos a utilizar: S5 (crudos y podados)
+
+1. Analizando los archivos crudos y podados, se obtiene un total de 38064 y 20031 lecturas tanto para los archivos crudos como los filtrados, respectivamente, tanto en R1 y R2. 
+Al extraer la lectura 3 de los archivos crudos se obtiene lo siguiente:
+ - S5_R1.fastq.gz:
+	- Linea 1: ID del read --> Identifica y contextualiza la lectura
+	- Linea 2: Secuencia de bases --> Base química leída del ADN
+	- Linea 3: Separador + --> delimita secuencia de calidad
+	- Linea 4: Calidad codificada --> indica la calidad de cada base, en código ASCII
+
+En este caso, la calidad del read se entrega en la línea 4, mientras que el ID 
