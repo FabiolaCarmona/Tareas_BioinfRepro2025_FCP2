@@ -7,7 +7,7 @@ Para encontrar la primera lectura con bases enmascaradas (soft-clipping) en el a
 `grep -m 1 -v '^@' S5.sam | grep -m 1 'S'` donde se excluyen las líneas de encabezado (^@) y se filtra la primera lectura que muestra la letra S en el campo CIGAR, lo que indica la presencia de bases suavizadas por soft-clipping.
 Con ello se obtiene lo siguiente:
 
-[Imagen 1](!/
+![Imagen 1](images_qualimapReport/Lectura_con_bases_enmascaradas.png)
 
 El campo CIGAR de esta lectura es **251M**.
 Interpretación del CIGAR:
@@ -20,27 +20,27 @@ El archivo HTML generado proporciona un resumen visual e interactivo de la calid
 
 1. **Distribución de cobertura a lo largo del genoma (Coverage across reference)**
 
-[Imagen 2](!/
+![Imagen 2](images_qualimapReport/genome_coverage_across_reference.png)
 
 La cobertura se mantiene relativamente uniforme en la mayoría de las regiones del genoma, con algunas zonas de cobertura reducida que podrían deberse a regiones difíciles de secuenciar o a sesgos de mapeo. La uniformidad en la cobertura es crucial para asegurar la representatividad de todo el genoma en análisis posteriores.
 
 2. **Histograma de cobertura (Coverage histogram)**
 
-[Imagen 3](!/
+![Imagen 3](./images_qualimapReport/genome_coverage_histogram.png)
 
 El histograma muestra que la mayoría de las bases tienen una cobertura media-alta, lo cual indica una buena profundidad general. Se observa una cola de regiones de baja cobertura, lo que puede estar asociado a zonas repetitivas o excluidas en la preparación de la librería.
 
 3. **Histograma de calidad de mapeo (Mapping quality histogram)**
 
-[Imagen 4]()
+![Imagen 4](./images_qualimapReport/genome_mapping_quality_histogram.png)
 
-Una alta proporción de reads presenta calidad de mapeo elevada, indicando una gran confiabilidad en el posicionamiento de las lecturas en la referencia. Sin embargo, la presencia de lecturas con menor calidad podría indicar regiones conservadas o ambiguas, incluso posibles artefactos
+Una alta proporción de reads presenta calidad de mapeo elevada, indicando una gran confiabilidad en el posicionamiento de las lecturas en la referencia. Sin embargo, la presencia de lecturas con menor calidad podría indicar regiones conservadas o ambiguas, incluso posibles artefactos.
 
 4. **Histograma de tamaño de inserto (Insert size histogram)**
 
-[Imagen 5]()
+![Imagen 5](./images_qualimapReport/genome_insert_size_histogram.png)
 
-Este gráfico describe la distribución de longitudes de fragmentos (pares) en la muestra. La distribución del tamaño de inserto es unimodal y se encuentra en el rango esperado, lo que sugiere que la preparación de la librería fue consistente sin grandes contaminantes o fragmentos fuera de rango que pudieran afectar el análisis
+Este gráfico describe la distribución de longitudes de fragmentos (pares) en la muestra. La distribución del tamaño de inserto es unimodal y se encuentra en el rango esperado, lo que sugiere que la preparación de la librería fue consistente sin grandes contaminantes o fragmentos fuera de rango que pudieran afectar el análisis.
 
 #### Conclusiones
 
