@@ -16,7 +16,7 @@ Interpretación del CIGAR:
 
 ### Reporte técnico de calidad del alineamiento
 Para evaluar la calidad del alineamiento realizado, se usó la herramienta *Qualimap*: `qualimap bamqc -bam S5.sorted.bam -outdir qualimap_report_S5`. Esto generó un reporte técnico de calidad, el cual incluye métricas como porcentaje de mapeo, cobertura, distribución, profundidad y gráficos de calidad de lecturas alineadas.
-El archivo HTML generado proporciona un resumen visual e interactivo de la calidad de los resultados de alineamiento, observándose lo siguiente:
+El [reporte completo de Qualimap](qualimap_report_S5/qualimapReport.html) generado proporciona un resumen visual e interactivo de la calidad de los resultados de alineamiento, observándose lo siguiente:
 
 1. **Distribución de cobertura a lo largo del genoma (Coverage across reference)**
 
