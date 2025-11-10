@@ -34,4 +34,5 @@ Luego, instalar los paquetes necesarios en R: `install.packages(c("ade4", "ggplo
 6. [Unidad 3 - Tarea 1 (Control de calidad lecturas NGS)](Tareas/Unidad3/Sesion1/Tarea_qc_lecturas_NGS.md)
 7. [Unidad 3 - Tarea 2 (cBioPortal)](Tareas/Unidad3/Sesión2/Tarea_cBioPortal.md)
 8. [Unidad 3 - Tarea 3 (Filtro y alineamiento de secuencias genómicas)](Tareas/Unidad3/Sesion3/Filtro_y_alineamiento_de_lecturas.md)
+9. [Unidad 3 - Tarea 4 (Llamado de variantes)](Tareas/Unidad3/Sesion3/Llamado_de_variantes.md)
    
