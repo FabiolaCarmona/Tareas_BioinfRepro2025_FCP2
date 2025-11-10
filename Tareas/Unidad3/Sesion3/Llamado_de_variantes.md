@@ -7,6 +7,8 @@ Muestra a utilizar: S5
 La selección de regiones blanco para la secuenciación se realizó sobre un panel clínico de genes, definido en el archivo BED proporcionado para esta práctica. El panel incluyó un total de **369 genes únicos**, que corresponden a los principales candidatos asociados a la sospecha clínica de los pacientes estudiados.
 La lista completa de genes se presenta en la Tabla 1 y fue derivada mediante la extracción de las anotaciones genéticas del cuarto campo de `regiones_blanco.bed`.
 
+**Tabla 1**
+
 | Cromosoma | Inicio    | Fin       | Gen         | Categoría   |
 |-----------|-----------|-----------|-------------|-------------|
 | chr10     | 89624221  | 89624310  | PTEN        | CDSExon     |
@@ -44,7 +46,7 @@ La lista completa de genes se presenta en la Tabla 1 y fue derivada mediante la 
 
 La región genómica total cubierta por el panel es de aproximadamente **91120 pares de bases**, según el cálculo del tamaño acumulado de los intervalos definidos en el archivo BED. Este valor representa el espacio objetivo para la captura, enriquecimiento y posterior secuenciación, asegurando una cobertura adecuada sobre los exones y regiones de relevancia médica de los genes seleccionados.
 
-Foto del codigo 
+[Foto del codigo](Sesion3/codigollamadovariantes.png)
 
 El proceso de filtrado de variantes utilizando los criterios DP<10 y QUAL<30 no eliminó ninguna variante del archivo VCF de la muestra analizada. Esto indica que todas las variantes llamadas superan ambos umbrales mínimos de profundidad y calidad, reflejando una alta confiabilidad en la detección de variantes para esta muestra.
 
