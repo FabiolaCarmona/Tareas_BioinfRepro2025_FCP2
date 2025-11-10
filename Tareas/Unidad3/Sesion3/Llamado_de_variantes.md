@@ -46,7 +46,7 @@ La lista completa de genes se presenta en la Tabla 1 y fue derivada mediante la 
 
 La región genómica total cubierta por el panel es de aproximadamente **91120 pares de bases**, según el cálculo del tamaño acumulado de los intervalos definidos en el archivo BED. Este valor representa el espacio objetivo para la captura, enriquecimiento y posterior secuenciación, asegurando una cobertura adecuada sobre los exones y regiones de relevancia médica de los genes seleccionados.
 
-[Foto del codigo](Sesion3/codigollamadovariantes.png)
+![Foto del codigo](codigollamadovariantes.png)
 
 El proceso de filtrado de variantes utilizando los criterios DP<10 y QUAL<30 no eliminó ninguna variante del archivo VCF de la muestra analizada. Esto indica que todas las variantes llamadas superan ambos umbrales mínimos de profundidad y calidad, reflejando una alta confiabilidad en la detección de variantes para esta muestra.
 
