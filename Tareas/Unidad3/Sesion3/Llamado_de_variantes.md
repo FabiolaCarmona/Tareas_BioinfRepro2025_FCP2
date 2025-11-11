@@ -63,6 +63,8 @@ Se realizó la detección y filtrado de variantes para la muestra analizada. En 
 
 En la visualización genómica mediante IGV Web (https://igv.org/app/), se seleccionó una variante detectada en el cromosoma 19 en la posición 130549481. El track de variantes (`S5_FILTERED_FINAL.vcf`) resalta la posición exacta, mientras que el track de alineamientos (`S5_sorted_RG.bam`) muestra una cobertura adecuada y la presencia de lecturas que soportan el alelo alternativo. Además, la variante se encuentra en la región correspondiente al gen CALR, lo que permite inspección directa de su contexto funcional y evidencia experimental.
 
+![Foto variante](variantecromosoma19.png)
+
 Se realizó la anotación funcional de las variantes detectadas utilizando el Variant Effect Predictor (VEP) con la versión del genoma GRCh37/hg19. La distribución de las variantes según su efecto y ubicación genómica se resume en la siguiente tabla. Las categorías incluyen variantes intrónicas, río arriba (upstream), río abajo (downstream), exónicas codificantes (missense), sinónimas, UTR y otros efectos combinados:
 
 | Consecuencia                                     | Número de variantes |
