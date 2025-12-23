@@ -38,4 +38,5 @@ Luego, instalar los paquetes necesarios en R: `install.packages(c("ade4", "ggplo
 10. [Unidad 3 - Sesión 4 (CLC Genomics - QUIAGEN)](Tareas/Unidad3/Sesion4/informe_clc_genomics_tutorial_1.md)
 11. [Unidad 3 - Sesión 5 (Tutorial Sarek)](Tareas/Unidad3/Sesion5/Taller_Sarek.md)
 12. [Unidad 4 - Sesión 1](Tareas/Unidad4/Sesion1/Informe4.1.md)
+13. [Unidad 4 - Sesión 2](Tareas/Unidad4/Sesion2/Informe_Unidad4_Sesion2.md)
    
