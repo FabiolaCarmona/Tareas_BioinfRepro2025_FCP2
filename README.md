@@ -39,4 +39,5 @@ Luego, instalar los paquetes necesarios en R: `install.packages(c("ade4", "ggplo
 11. [Unidad 3 - Sesión 5 (Tutorial Sarek)](Tareas/Unidad3/Sesion5/Taller_Sarek.md)
 12. [Unidad 4 - Sesión 1](Tareas/Unidad4/Sesion1/Informe4.1.md)
 13. [Unidad 4 - Sesión 2](Tareas/Unidad4/Sesion2/Informe_Unidad4_Sesion2.md)
+14. [Unidad 4 - Sesión 3](Tareas/Unidad4/Sesion3/RNA_seq/code/AnalisisRNAseq.md)
    
