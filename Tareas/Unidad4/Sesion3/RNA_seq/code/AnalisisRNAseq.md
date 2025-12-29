@@ -150,7 +150,14 @@ show_rownames=FALSE)
 top10 <- res[order(res$padj)[1:10], ]
 kable(top10, digits=3, caption="Top 10 DEGs (Lsr KD vs WT)")
 ```
+## 4. Resúmen:
 
+- **880 DEGs identificados** (padj < 0.05) [file:156]
+- **430 genes upregulated** (Mutante > WT, log2FC > 1)
+- **447 genes downregulated** (Mutante < WT, log2FC < -1)
+
+**Top 10 DEGs (padj < 0.05, |log2FC| > 2):**
+top 10 upregulated en mutante
 
 # Discusión
 
@@ -165,11 +172,9 @@ El knockdown del gen **Lsr** en *Sulfobacillus thermosulfidooxidans* genera **`r
 
 # Conclusiones
 
+- **Hallazgos:** 430 genes ↑ y 447 genes ↓ en subellín termotolerante
+- **Implicaciones:** Regulación de vías críticas para excreción bacteriana y adaptación a condiciones térmicas
 - **Hipótesis confirmada**: Knockdown Lsr genera **fenotipo dependiente del crecimiento**
-
-- **`r sum(res$padj < 0.05, na.rm=TRUE)` DEGs identificados** (padj < 0.05)
-
-- **Pipeline reproducible** RNA-seq → DESeq2 → GitHub
 
 **Próximos pasos**:
 - Validación qPCR top 10 DEGs
@@ -191,15 +196,3 @@ cat("✅ Exportados:\n- Lsr_KD_DESeq2_results.csv\n- Lsr_top10_DEGs.csv\n- Lsr_D
 
 ---
 
-## Introducción
-Análisis RNA-seq para evaluar knockdown gen **Lsr** en *Sulfobacillus thermosulfidooxidans*.
-
-## Resultados clave
-- **DEGs encontrados**: [número del CSV]
-- **Volcano plot**: ![Volcano](volcano_plot.pdf)
-
-## Archivos generados
-- `deseq2_results.csv` - Resultados completos
-- `volcano_plot.pdf` - Gráfico
-
-**Pipeline completo ejecutado desde AnalisisRNAseq.Rmd**
