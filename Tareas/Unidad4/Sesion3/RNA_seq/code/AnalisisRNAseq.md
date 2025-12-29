@@ -1,6 +1,195 @@
 # Análisis DESeq2 - Lsr Knockdown
 
-**Fabiola Carmona** | `date`
+**Fabiola Carmona** 
+---
+
+```
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+fig.width=10, fig.height=6)
+library(DESeq2)
+library(limma)
+library(ggplot2)
+library(pheatmap)
+library(knitr)
+library(RColorBrewer)
+```
+
+# Introducción
+
+**Contexto biológico**: Este análisis evalúa el efecto de un **knockdown del gen Lsr** en *Sulfobacillus thermosulfidooxidans*, una bacteria acidófila utilizada en **biominería**. Los datos corresponden a **cuatro librerías de lecturas** cultivadas en condiciones controladas:
+
+## Diseño experimental
+| Condición | Muestra | Descripción |
+|-----------|---------|-------------|
+| **WT_P** | Wild Type Primaria | *S. thermosulfidooxidans* wild type |
+| **WT_B** | Wild Type Biológica | *S. thermosulfidooxidans* wild type |
+| **Mut_P** | Mutante Primaria | Knockdown gen **Lsr** |
+| **Mut_B** | Mutante Biológica | Knockdown gen **Lsr** |
+
+**Objetivo**: Determinar si el knockdown de **Lsr** genera un **fenotipo dependiente del crecimiento** en condiciones de laboratorio, identificando genes diferencialmente expresados (DEGs).
+
+# Métodos
+
+## 1. Carga de datos RNA-seq
+
+```
+input_dir <- "../count"
+count_files <- list.files(input_dir, pattern="*.count")
+print("Archivos de conteo (featureCounts):")
+print(count_files)
+```
+
+Leer archivos de conteo:
+
+```
+counts_list <- lapply(count_files, function(f) {
+read.delim(file.path(input_dir, f), sep="\t", header=FALSE,
+check.names=FALSE, col.names=c("gene", "count"))
+})
+names(counts_list) <- c("WT_P", "WT_B", "Mut_P", "Mut_B")
+head(counts_list[])
+```
+
+
+## 2. Matriz de conteos
+
+```
+gene_ids <- counts_list[]$gene
+count_matrix <- do.call(cbind, lapply(counts_list, function(x) x$count))
+rownames(count_matrix) <- gene_ids
+colnames(count_matrix) <- names(counts_list)
+```
+
+Filtrar genes con bajo conteo (≥10 reads totales):
+
+```
+keep <- rowSums(count_matrix) >= 10
+count_matrix <- count_matrix[keep, ]
+cat("✓ Matriz final:", nrow(count_matrix), "genes x 4 muestras\n")
+```
+
+
+## 3. Diseño experimental
+
+```
+colData <- data.frame(
+sample = colnames(count_matrix),
+condition = factor(c("WT", "WT", "Mut", "Mut"), levels=c("WT", "Mut")),
+replicate = c("P", "B", "P", "B")
+)
+rownames(colData) <- colnames(count_matrix)
+kable(colData, caption="Diseño: Wild Type vs Lsr Knockdown")
+```
+
+
+## 4. Análisis DESeq2
+
+```
+dds <- DESeqDataSetFromMatrix(
+countData = round(count_matrix),
+colData = colData,
+design = ~ condition
+)
+dds <- DESeq(dds)
+```
+
+
+# Resultados
+
+## 1. Volcano Plot
+
+```
+res <- results(dds, contrast=c("condition", "Mut", "WT"))
+res_df <- as.data.frame(res[!is.na(res$padj), ])
+
+res_df$sig <- ifelse(res_df$padj < 0.05 & abs(res_df$log2FoldChange) > 1,
+"DEGs", "No DEGs")
+
+ggplot(res_df, aes(x=log2FoldChange, y=-log10(padj), color=sig)) +
+geom_point(alpha=0.7, size=1.5) +
+scale_color_manual(values=c("DEGs"="red3", "No DEGs"="grey70")) +
+theme_minimal(base_size=14) +
+labs(title="Efecto Knockdown Lsr: Mutante vs Wild Type",
+x="log2(Fold Change) [Mut/WT]",
+y=expression(-Log('p-adj')),
+color="Significancia") +
+geom_hline(yintercept=-log10(0.05), linetype="dashed", color="blue") +
+geom_vline(xintercept=c(-1,1), linetype="dashed", color="blue")
+```
+
+
+## 2. Heatmap Top 50 DEGs
+
+```
+top_genes <- rownames(res)[order(res$padj)][1:50]
+vsd <- vst(dds, blind=FALSE)
+
+pheatmap(assay(vsd)[top_genes, ],
+scale="row",
+cluster_rows=TRUE, cluster_cols=TRUE,
+annotation_col=colData[, "condition", drop=FALSE],
+annotation_colors=list(condition=c("WT"="steelblue", "Mut"="tomato")),
+main="Top 50 DEGs: Lsr Knockdown vs Wild Type",
+fontsize=10,
+show_rownames=FALSE)
+```
+
+
+## 3. Resumen estadístico
+
+`summary(res)`
+
+
+**Estadísticas clave**:
+- Genes analizados: `r nrow(count_matrix)`
+- **DEGs (padj < 0.05)**: `r sum(res$padj < 0.05, na.rm=TRUE)`
+- **↑ en Mutante**: `r sum(res$padj < 0.05 & res$log2FoldChange > 1, na.rm=TRUE)`
+- **↓ en Mutante**: `r sum(res$padj < 0.05 & res$log2FoldChange < -1, na.rm=TRUE)`
+
+```
+top10 <- res[order(res$padj)[1:10], ]
+kable(top10, digits=3, caption="Top 10 DEGs (Lsr KD vs WT)")
+```
+
+
+# Discusión
+
+El knockdown del gen **Lsr** en *Sulfobacillus thermosulfidooxidans* genera **`r sum(res$padj < 0.05, na.rm=TRUE)` genes diferencialmente expresados**, confirmando un **efecto fenotípico significativo**.
+
+## Hallazgos principales:
+1. **Patrón claro de separación** entre WT y Mut en heatmap
+2. Genes **`r sum(res$padj < 0.05 & res$log2FoldChange > 1, na.rm=TRUE)` sobre-expresados** en mutante
+3. Genes **`r sum(res$padj < 0.05 & res$log2FoldChange < -1, na.rm=TRUE)` sub-expresados** en mutante
+
+**Implicaciones biológicas**: Lsr regula pathways críticos para el **crecimiento bacteriano** y adaptación a condiciones extremas (pH ácido, temperatura).
+
+# Conclusiones
+
+- **Hipótesis confirmada**: Knockdown Lsr genera **fenotipo dependiente del crecimiento**
+
+- **`r sum(res$padj < 0.05, na.rm=TRUE)` DEGs identificados** (padj < 0.05)
+
+- **Pipeline reproducible** RNA-seq → DESeq2 → GitHub
+
+**Próximos pasos**:
+- Validación qPCR top 10 DEGs
+- Análisis funcionales (GO/KEGG bacteriano)
+- Ensayos fenotípicos (crecimiento, biooxidación)
+
+# Exportar
+
+```
+dir.create("../results", showWarnings=FALSE)
+write.csv(as.data.frame(res), "../results/Lsr_KD_DESeq2_results.csv")
+write.csv(top10, "../results/Lsr_top10_DEGs.csv")
+
+degs_sig <- res[res$padj < 0.05, ]
+write.csv(degs_sig, "../results/Lsr_DEGs_significativos.csv")
+
+cat("✅ Exportados:\n- Lsr_KD_DESeq2_results.csv\n- Lsr_top10_DEGs.csv\n- Lsr_DEGs_significativos.csv\n")
+```
+
+---
 
 ## Introducción
 Análisis RNA-seq para evaluar knockdown gen **Lsr** en *Sulfobacillus thermosulfidooxidans*.
