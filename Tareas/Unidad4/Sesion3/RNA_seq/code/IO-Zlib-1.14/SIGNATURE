@@ -1,0 +1,48 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.88.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+SHA256 e3e627f058c06bcd7cb98aa988c0e46297715bc5ecf75d8d7f1452fbe1785622 ChangeLog
+SHA256 c357c59a4d66c3231dc2eea7eb754e6bc60ec7afb5eef8ab8e1a16e13a70ff13 MANIFEST
+SHA256 4e17e38f81657e99d9d83757512c56d51ba676bc4a58c68cf9e0aed2e43036d0 META.json
+SHA256 69d854ad1e8bca561b0905b3c10290b1b2d2ef8bfa4a6be87e3e410b495b5ba2 META.yml
+SHA256 756b405f3af0af5471f0dde2bb6c058651624f91aac23cfe51d6f5cf888fb686 Makefile.PL
+SHA256 7b931b8dcceb2b0532014b5ca0eefbf7de63507859246ebc38f9ab8b0049ee70 README.md
+SHA256 baed48e43fb016c0f8a3ed8e8f2d88ea66d0edfc7297e991869b2d7031a81e42 Zlib.pm
+SHA256 c71e28cda02444ccc69b13bcc6fd73c2fcb2c523f635f8bc29adbee872688888 t/basic.t
+SHA256 83d424f59125873200d30c6e0be607f2218b2326e7022c11fe9937378311bc80 t/external.t
+SHA256 ee379f31baff371e928cad76203dfafb46f9f625aaf9adc00326b4eac7b1b363 t/getc.t
+SHA256 870398194a5829dd0327f3d80f240965b4aee27cb1b1a6d1ab2bd19001fb8069 t/getline.t
+SHA256 fd0ef176e07b39c144c83ffe23e1e5bc80f022f9a1bd3f99089281c49f30e732 t/import.t
+SHA256 ec2b6f03a7d53dbeb9e9124251ade72482c8228a82995f75e60e1ee3663f943a t/large.t
+SHA256 e1bf5fc09566ff3ec89b9d1794843f24e5c13dbd5d628c0aea4b334a25592595 t/tied.t
+SHA256 afc357ad76016441b07952563bfd9e56b44620b34f9232dd7e4f40cb3d28cc82 t/uncomp1.t
+SHA256 e4c401143d5f0b07d9fc4045e65785456d34446ee12658e0fb56ed12d5f75342 t/uncomp2.t
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBAwAdFiEElfb1NKKyvgypfZkvq7Gbqad8TyAFAmO9zOUACgkQq7Gbqad8
+TyA8aQ//aO3Nl6rssMp0l4nOGk1dUzMu4qltP9B/EmEwo/wppnQx9vzgZfqDCPvY
+Rqh7PKITe/i1xysAYraOUdFBGQEOYFtVl40KYz0WL/daTsXwZ+nr7QXn0DKyoaCr
+DYji+1hIgJJbfcvl6tUJ4XsCrbu+YguiABD2+8IddlXdCVR+ojyxyqfyQiUUXEgb
+ohyQeuiY9F0lr5ABbifxuWnxdroB9GvPSzwz71rlvyIq8AKiKkcnwYV28TMPKMQe
+2yxKWJE9qwrlR47Ok3QG1cC9LPjRPd6ZD8e4qcL/pwSGytHEhIJFdAREGbA6Obp/
+fA8RHTsjfarkH/A/q6gHSCTTHZiqBJ2/ZVHFhTnmf+K+QTG+qwj1zbPTkx2d7Zao
+azE18vejunUISN1M+bYAlSrbEVdiTkgf7s7jegJObgk+YZlahIxs1HXcCKkYe7At
+aHCd0QnQkf6fBTY0Lv+IEmesnJXaOiLC7cQ+RJQSEAQN8jgAHGpMhfE3/ka4Aru6
+Vaw/Z98taFU37SRUXiRQhnMOfaHtLJD53g45bw+YgPl8xMpznBFlcJkkuOCrTUBM
+gfZoyfWVSoLpblCszuPwA5q/eYJKFsVvHA8og582vrko52iixKX+p1j+M0RCZIyx
+4Ev9WRw4qfRxGP+Hjet3uLNgURV6rKGekt4aqunKvbr9wvvzJf8=
+=MYMS
+-----END PGP SIGNATURE-----
