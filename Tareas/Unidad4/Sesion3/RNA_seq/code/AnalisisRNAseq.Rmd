@@ -10,7 +10,6 @@ output:
     code_folding: show
 ---
 
-```
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
 fig.width=10, fig.height=6)
 library(DESeq2)
@@ -19,7 +18,6 @@ library(ggplot2)
 library(pheatmap)
 library(knitr)
 library(RColorBrewer)
-```
 
 
 # Introducción
@@ -40,46 +38,38 @@ library(RColorBrewer)
 
 ## 1. Carga de datos RNA-seq
 
-```
+
 input_dir <- "../count"
 count_files <- list.files(input_dir, pattern="*.count")
 print("Archivos de conteo (featureCounts):")
 print(count_files)
-```
+
 
 Leer archivos de conteo:
 
-```
 counts_list <- lapply(count_files, function(f) {
 read.delim(file.path(input_dir, f), sep="\t", header=FALSE,
 check.names=FALSE, col.names=c("gene", "count"))
 })
 names(counts_list) <- c("WT_P", "WT_B", "Mut_P", "Mut_B")
 head(counts_list[])
-```
 
 
 ## 2. Matriz de conteos
 
-```
 gene_ids <- counts_list[]$gene
 count_matrix <- do.call(cbind, lapply(counts_list, function(x) x$count))
 rownames(count_matrix) <- gene_ids
 colnames(count_matrix) <- names(counts_list)
-```
 
-Filtrar genes con bajo conteo (≥10 reads totales):
 
-```
+#Filtrar genes con bajo conteo (≥10 reads totales):
 keep <- rowSums(count_matrix) >= 10
 count_matrix <- count_matrix[keep, ]
 cat("✓ Matriz final:", nrow(count_matrix), "genes x 4 muestras\n")
-```
-
 
 ## 3. Diseño experimental
 
-```
 colData <- data.frame(
 sample = colnames(count_matrix),
 condition = factor(c("WT", "WT", "Mut", "Mut"), levels=c("WT", "Mut")),
@@ -87,20 +77,36 @@ replicate = c("P", "B", "P", "B")
 )
 rownames(colData) <- colnames(count_matrix)
 kable(colData, caption="Diseño: Wild Type vs Lsr Knockdown")
-```
-
 
 ## 4. Análisis DESeq2
 
-```
 dds <- DESeqDataSetFromMatrix(
 countData = round(count_matrix),
 colData = colData,
 design = ~ condition
 )
 dds <- DESeq(dds)
-```
 
+
+## 5. Heatmap Top 50 DEGs
+
+library(pheatmap)
+
+#Top 50 genes más significativos
+top_genes <- rownames(res)[order(res$padj)][1:50]
+
+#VST transformación para heatmap
+vsd <- vst(dds, blind=FALSE)
+
+#Crear heatmap
+pheatmap(assay(vsd)[top_genes, ],
+scale="row",
+cluster_rows=TRUE,
+cluster_cols=TRUE,
+annotation_col = colData,
+annotation_colors = list(condition = c("WT" = "blue", "Mut" = "red")),
+main = "Top 50 DEGs: Lsr Knockdown vs Wild Type",
+fontsize = 10)
 
 # Resultados
 
